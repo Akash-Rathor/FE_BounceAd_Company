@@ -1,22 +1,24 @@
-import React from 'react'
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-import Sidebar from '../../components/Sidebar';
+import React from 'react';
 import Cookies from 'js-cookie';
+import Navbar from '../../components/Navbar/Navbar';
+import Sidebar from '../../components/Sidebar';
+import '../../components/sidebar.css';
 
 const Dashboard = () => {
-
   const data = Cookies.get('user');
+  const user = JSON.parse(data);
 
-  const user = JSON.parse(data)
-    
   return (
-    <div>
-      <Sidebar user={user.name}/>
-      <div className='flex flex-1 w-5/6 ml-80'>
-        {user.name}
+    <>
+      <Navbar />
+      <div className="flex">
+        <Sidebar user={user.name} />
+        <div className="content">
+          {user.name}
+        </div>
       </div>
-    </div>
-  )
+    </>
+  );
 }
 
 export default Dashboard;
