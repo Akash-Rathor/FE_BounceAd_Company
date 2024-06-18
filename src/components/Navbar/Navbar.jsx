@@ -9,19 +9,21 @@ const Navbar = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [signedIn, setSignedIn] = useState(false);
     const { logoutUser } = useLogout();
+    const [user,setUser] = useState({})
 
     const token = Cookies.get('token');
-    const user = Cookies.get('user');
-
-    console.log('=============',token);
 
     const logout = () => {
         logoutUser();
+        setSignedIn(false);
     }
 
     useEffect(() =>{
         if(token){
             setSignedIn(true)
+            const data = Cookies.get('user');
+            const userinfo = JSON.parse(data)
+            setUser(userinfo);
         }
     },[token])
 
@@ -81,10 +83,10 @@ const Navbar = () => {
                                 </button>
                             </div>}
 
-                            {signedIn && <div hidden={isVisible} class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" >
-                                <Link to="#" class="block px-4 py-2 text-md text-gray-700 hover:bg-cream" role="menuitem" tabindex="-1" id="user-menu-item-0">Hi</Link>
-                                <Link to="#" class="block px-4 py-2 text-md text-gray-700 hover:bg-cream" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</Link>
-                                <buttom onClick={logout} class="block px-4 py-2 text-md text-gray-700 hover:bg-cream" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttom>
+                            {signedIn && <div hidden={!isVisible} class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" >
+                                <buttom onClick={logout} class="block px-4 py-2 text-md text-gray-700 hover:bg-cream hover:cursor-pointer" role="menuitem" tabindex="-1" id="user-menu-item-2">{user.name}'s Profile</buttom>
+                                <buttom onClick={logout} class="block px-4 py-2 text-md text-gray-700 hover:bg-cream hover:cursor-pointer" role="menuitem" tabindex="-1" id="user-menu-item-2">Settings</buttom>
+                                <buttom onClick={logout} class="block px-4 py-2 text-md text-gray-700 hover:bg-cream hover:cursor-pointer" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttom>
                             </div>}
 
                         </div>

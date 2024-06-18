@@ -2,12 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-function useLogin(token, userInfo) {
+function useLogin() {
+
     const navigate = useNavigate();
   
-    const loginUser = () => {
+    const loginUser = async(token,userInfo) => {
       Cookies.set('token', token, { expires: 1, secure: true });
-      Cookies.set('user', userInfo, { expires: 1, secure: true });
+      Cookies.set('user', JSON.stringify(userInfo), { expires: 1, secure: true });
       navigate('/dashboard', { state: { userInfo } });
     };
   
@@ -17,7 +18,7 @@ function useLogin(token, userInfo) {
   function useLogout() {
     const navigate = useNavigate();
   
-    const logoutUser = () => {
+    const logoutUser = async() => {
       Cookies.remove('token');
       Cookies.remove('user');
       navigate('/login');

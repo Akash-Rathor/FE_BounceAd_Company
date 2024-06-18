@@ -27,8 +27,8 @@ const Signup = () => {
       const userInfo = await fetchUserInfo(tokenResponse.access_token);
       loginUser(tokenResponse, userInfo);
       console.log('I am inside page > auth > signup')
-      console.log('Login Success:', tokenResponse)
-      console.log('Login Success:', userInfo)
+      // console.log('Login Success:', tokenResponse)
+      // console.log('Login Success:', userInfo)
     },
     onError: (error) => console.log('Login Error:', error),
   });

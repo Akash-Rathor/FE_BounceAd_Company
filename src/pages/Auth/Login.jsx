@@ -29,17 +29,15 @@ const Login = () => {
   useEffect(() => {
     googleLogout();
     console.log(userInfo)
-    // navigate('/dashboard', { state: { userInfo } });
   },[userInfo,navigate])
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       const userInfo = await fetchUserInfo(tokenResponse.access_token);
-      loginUser(tokenResponse, userInfo);
+      console.log('tokenResponse.access_token',tokenResponse.access_token)
+      console.log('userInfo',userInfo)
+      await loginUser(tokenResponse.access_token, userInfo);
       setUserInfo(userInfo);
-      console.log('I am inside page > auth > Login')
-      console.log('Login Success:', tokenResponse)
-      console.log('Login Success:', userInfo)
     },
     onError: (error) => console.log('Login Error:', error),
   });
