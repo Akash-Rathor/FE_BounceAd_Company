@@ -14,25 +14,31 @@ import Navbar from "../../components/Navbar/Navbar";
 
 const Dashboard = () => {
 
+  const { logoutUser } = useLogout();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const [user,setUser] = useState()
 
   const navigate = useNavigate();
 
-  const { logoutUser } = useLogout();
 
   useEffect(() => {
     const token = Cookies.get('token');
+    const getUser = () => {
+      const u = Cookies.get('user');
+      console.log(u)
+      setUser(u);
+    }
     if (!token) {
       logoutUser();
     }
+    getUser();
   })
 
 
 
   return (
-    <DefaultLayout sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}>
-      <Navbar showLogo={true} isLoggedIn={true} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+    <DefaultLayout sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={user}>
+      {/* <Navbar showLogo={false} isLoggedIn={true} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={user}/> */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 mt-10">
         <CardDataStats title="Total views" total="$3.456K" rate="0.43%" levelUp>
           <svg
@@ -122,11 +128,8 @@ const Dashboard = () => {
 
       <div className="mt-4 grid grid-cols-2 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <ChartTwo />
-        {/* <ChartThree /> */}
-        {/* <TopPlaces /> */}
       </div>
       <div className="flex flex-col md:flex-row justify-between mt-4 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        {/* <ChartTwo /> */}
         <ChartThree />
         <TopPlaces />
       </div>

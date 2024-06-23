@@ -5,11 +5,11 @@ import UserOne from '../../images/user/user-01.png';
 import { useLogout } from '../../utility/Auth/Auth';
 import Cookies from 'js-cookie';
 
-const DropdownUser = () => {
+const DropdownUser = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { logoutUser } = useLogout();
 
-
+  console.log('props.user.picture',props.user.picture)
   const handleLogout = () => {
     logoutUser();
   }
@@ -23,13 +23,13 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {props.user.name}
           </span>
-          <span className="block text-xs">UX Designer</span>
+          <span className="block text-xs">{props.user.email}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <img src={UserOne} alt="User" />
+          <img src={props.user.picture} alt="User" className='rounded-full'/>
         </span>
 
         <svg

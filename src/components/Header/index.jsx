@@ -84,7 +84,7 @@ console.log(props)
             </button>
             </Link>}
             
-          {props.isLoggedIn && <DropdownUser />}
+          {props.isLoggedIn && <DropdownUser user={props.user}/>}
           {/* <!-- User Area --> */}
         </div>
       </div>
