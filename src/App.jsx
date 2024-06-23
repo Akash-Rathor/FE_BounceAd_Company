@@ -1,26 +1,28 @@
 import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider,useLocation } from 'react-router-dom';
+import {useState,useEffect} from 'react';
 import Home from './pages/Home/Home';
 import Login from './pages/Auth/Login';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
 import Navbar from './components/Navbar/Navbar';
 import Blogs from './pages/Blogs/Blogs';
-import Signup from './pages/Auth/Signup';
 import Dashboard from './pages/Dashboard/Dashboard';
 
+
 const router = createBrowserRouter([
-  { path: '/', element: <><Navbar /><Home /></> },
-  { path: '/login', element: <><Navbar /><Login /></> },
-  { path: '/about', element: <><Navbar /><About /></> },
-  { path: '/contact', element: <><Navbar /><Contact /></> },
-  { path: '/blogs', element: <><Navbar /><Blogs /></> },
-  { path: '/signup', element: <><Navbar /><Signup /></> },
+  { path: '/', element: <><Navbar  showLogo={true}/><Home /></> },
+  { path: '/login', element: <><Navbar showLogo={true}/><Login /></> },
+  { path: '/about', element: <><Navbar showLogo={true}/><About /></> },
+  { path: '/contact', element: <><Navbar showLogo={true}/><Contact /></> },
+  { path: '/blogs', element: <><Navbar showLogo={true}/><Blogs /></> },
   { path: '/dashboard', element: <Dashboard /> },
 ]);
 
 function App() {
+
   return (
+
     <>
         <RouterProvider router={router} />
     </>
