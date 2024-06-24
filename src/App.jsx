@@ -10,10 +10,12 @@ import Blogs from './pages/Blogs/Blogs';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Campaigns from './pages/Campaigns/Campaigns';
 import NewCampaign from './pages/Campaigns/NewCampaign';
+import Signup from './pages/Auth/Signup';
 
 const router = createBrowserRouter([
   { path: '/', element: <><Navbar  showLogo={true}/><Home /></> },
   { path: '/login', element: <><Navbar showLogo={true}/><Login /></> },
+  { path: '/signup', element: <><Navbar showLogo={true}/><Signup /></> },
   { path: '/about', element: <><Navbar showLogo={true}/><About /></> },
   { path: '/contact', element: <><Navbar showLogo={true}/><Contact /></> },
   { path: '/blogs', element:<Blogs /> },

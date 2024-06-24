@@ -33,7 +33,7 @@ const options = {
   plotOptions: {
     pie: {
       donut: {
-        size: "45%",
+        size: "50%",
         background: "transparent",
       },
     },
@@ -85,7 +85,7 @@ const ChartThree = () => {
       <div className="mb-3 justify-between gap-4 sm:flex">
         <div>
           <h5 className="text-xl font-semibold text-black dark:text-white">
-            Visitors Analytics
+            Gender Analytics
           </h5>
         </div>
         <div>
@@ -148,7 +148,7 @@ const ChartThree = () => {
         </div>
         <div className="sm:w-1/2 w-full px-8">
           <div className="flex w-full items-center">
-            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#eb34c9]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Female </span>
               <span> 33% </span>
@@ -157,22 +157,22 @@ const ChartThree = () => {
         </div>
         <div className="sm:w-1/2 w-full px-8">
           <div className="flex w-full items-center">
-            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#d4b52f]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Others </span>
               <span> 2% </span>
             </p>
           </div>
         </div>
-        {/* <div className="sm:w-1/2 w-full px-8">
+        <div className="sm:w-1/2 w-full px-8">
           <div className="flex w-full items-center">
-            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#0FADCF]"></span>
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#000000]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Unknown </span>
-              <span> 56% </span>
+              <span> 0 </span>
             </p>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   )

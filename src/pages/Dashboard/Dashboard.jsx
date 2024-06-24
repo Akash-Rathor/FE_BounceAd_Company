@@ -40,7 +40,7 @@ const Dashboard = () => {
     <DefaultLayout sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={user}>
       {/* <Navbar showLogo={false} isLoggedIn={true} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={user}/> */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 mt-10">
-        <CardDataStats title="Total views" total="$3.456K" rate="0.43%" levelUp>
+        <CardDataStats title="Total impressions" total="123.4k" rate="0.40%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -130,8 +130,8 @@ const Dashboard = () => {
         <ChartTwo />
       </div>
       <div className="flex flex-col md:flex-row justify-between mt-4 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <ChartThree />
-        <TopPlaces />
+        <ChartThree />  {/* Gender Analytics */}
+        <TopPlaces /> {/* top 5 locations Analytics */}
       </div>
 
     </DefaultLayout>

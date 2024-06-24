@@ -6,7 +6,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      satoshi: ['Satoshi', 'sans-serif'],
+      satoshi: ['sans-serif','Satoshi'],
     },
     screens: {
       '2xsm': '375px',
@@ -51,6 +51,7 @@ module.exports = {
         success: '#219653',
         danger: '#D34053',
         warning: '#FFA70B',
+        'gray-4':'#9a9b9c',
       },
       fontSize: {
         'title-xxl': ['44px', '55px'],
