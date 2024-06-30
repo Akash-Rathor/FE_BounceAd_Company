@@ -6,7 +6,6 @@ import ChartThree from "../../components/Charts/ChartThree"
 import ChartTwo from "../../components/Charts/ChartTwo"
 import TopPlaces from "../../components/TopPlaces/TopPlaces"
 // import MapOne from "../../components/Maps/MapOne"
-import TableOne from "../../components/Tables/TableOne"
 import DefaultLayout from '../../layout/DefaultLayout';
 import Cookies from "js-cookie";
 import { useLogout } from "../../utility/Auth/Auth";

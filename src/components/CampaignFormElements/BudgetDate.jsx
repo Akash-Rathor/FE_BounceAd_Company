@@ -10,13 +10,14 @@ const dataset = [
 ]
 
 const BudgetDate = ({ setBudgetAndDates }) => {
-    
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [data, setData] = useState({
-        startDate:startDate,endDate:endDate , budgetType:''
+        startDate:startDate,endDate:endDate , budgetType:'',days:0
     });
     const [message, setMessage] = useState('');
+
+    const [budgetMessage,setBudgetMessage] = useState('');
 
     const setBudgetType = (val) => {
         console.log('val', val)
@@ -30,6 +31,37 @@ const BudgetDate = ({ setBudgetAndDates }) => {
             budgetType: val
         }));
     };
+
+    function parseDate(input) {
+        const parts = input.split('/');
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+    
+    function daysBetween(date1, date2) {
+        const startDate = parseDate(date1);
+        const endDate = parseDate(date2);
+        const timeDifference = Math.abs(endDate - startDate);
+        const dayDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        
+        return dayDifference;
+    };
+
+    useEffect(() => {
+        if(data['startDate'] && data['endDate'] && data['budgetType']){
+            const days = daysBetween(data['startDate'],data['endDate'])
+            const budget = parseFloat(data['amount'])
+            setData(prev => ({
+                ...prev,
+                days: days
+            }))
+            if (!data['budgetType'].toLowerCase().includes('daily')){
+                setBudgetMessage(`A ₹${budget} campaign total amount is similar to a ₹${budget/days} daily budget amount that runs for ${days} days.`);
+
+            }else{
+                setBudgetMessage(`For the ${days} days, you won't pay more than your daily budget times the average number of days in a month. Some days you might spend less than your daily budget, and on others you might spend up to twice as much.`);
+            }
+        }
+    },[data])
 
     const handleDateChange = (date) => {
         const formattedDate = format(date, 'dd/MM/yyyy');
@@ -105,6 +137,7 @@ const BudgetDate = ({ setBudgetAndDates }) => {
                             showPreviousMonths={false}
                             />
                         </div>
+                        {budgetMessage && <p style={{fontSize:12}} className='p-2 bg-green-500 bg-opacity-30 text-green-900 rounded-md mt-5'>{budgetMessage}</p>}
                     </div>
 
                 </div>

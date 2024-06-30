@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const Accordion = ({ children ,title,value=null}) => {
+const Accordion = ({ children ,title,value=null,subType=false,error=false}) => {
   return (
-    <section className="relative z-20 overflow-hidden bg-white dark:bg-dark py-2">
+    <section className="relative z-20 overflow-hidden bg-white dark:bg-dark py-2 px-2">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4 h-auto">
-            <AccordionItem title={title} value={value}>{children}</AccordionItem>
+            <AccordionItem title={title} value={value} subType={subType} error={error}>{children}</AccordionItem>
           </div>
         </div>
       </div>
@@ -16,7 +16,7 @@ const Accordion = ({ children ,title,value=null}) => {
 
 export default Accordion;
 
-const AccordionItem = ({ title, value,children }) => {
+const AccordionItem = ({ title, value,subType,error,children }) => {
   const [active, setActive] = useState(false);
 
   const handleToggle = (event) => {
@@ -25,14 +25,14 @@ const AccordionItem = ({ title, value,children }) => {
   };
 
   return (
-    <div className="w-full rounded-lg bg-white p-0 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)]">
+    <div className={`w-full rounded-lg ${subType ? 'bg-slate-500 bg-opacity-10' : 'bg-white' } p-0 shadow-[0px_20px_95px_0px_rgba(201,203,204,0.30)] dark:bg-dark-2 dark:shadow-[0px_20px_95px_0px_rgba(0,0,0,0.30)] ${error ? 'ring-1 ring-red-600': null} `}>
       <button
         className="w-full flex items-center text-left p-4 bg-gray-100 dark:bg-gray-700"
         onClick={handleToggle}
       >
         <div className="flex-shrink-0 mr-5 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/5 text-primary dark:bg-white/5">
           <svg
-            className={`fill-primary stroke-primary duration-200 ease-in-out ${
+            className={`fill-primary ${subType ? 'stroke-warning':'stroke-green-500'} duration-200 ease-in-out ${
               active ? "rotate-180" : ""
             }`}
             width="17"
