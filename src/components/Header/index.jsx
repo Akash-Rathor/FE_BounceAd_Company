@@ -7,7 +7,6 @@ import logoIcon from '../../assets/images/logo.png';
 import Cookies from 'js-cookie';
 
 const Header = (props) => {
-console.log(props)
 
   return (
     <>

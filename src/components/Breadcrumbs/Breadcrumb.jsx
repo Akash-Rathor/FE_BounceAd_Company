@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 
 const Breadcrumb = ({ show = true, pageName, Button = null }) => {
+
+  console.log('Button',Button)
+
   return (
     show ? (
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-title-md2 font-semibold text-black dark:text-white">
           {pageName}
         </h2>
-
+        {Button && <div>{<Button />}</div>}
         <nav>
           <ol className="flex items-center gap-2">
             <li>
@@ -18,7 +21,6 @@ const Breadcrumb = ({ show = true, pageName, Button = null }) => {
             <li className="font-medium text-primary">{pageName}</li>
           </ol>
         </nav>
-        {Button && <div>{Button}</div>}
       </div>
     ) : null
   );

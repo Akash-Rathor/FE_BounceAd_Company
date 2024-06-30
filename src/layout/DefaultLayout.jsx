@@ -1,10 +1,25 @@
-import React, { useState } from "react"
+import React, { useState , useEffect} from "react"
 // import Header from "../components/Header/index"
 import Sidebar from "../components/Sidebar/index"
 import {useLogout} from '../utility/Auth/Auth';
 import Navbar from "../components/Navbar/Navbar";
+import Cookies from "js-cookie";
 
-const DefaultLayout = ({ children, sidebarOpen,setSidebarOpen,user}) => {
+const DefaultLayout = ({ children,user}) => {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const { logoutUser } = useLogout();
+  useEffect(() => {
+    const token = Cookies.get('token');
+    const getUser = () => {
+      const u = Cookies.get('user');
+    }
+    if (!token) {
+      logoutUser();
+    }
+    getUser();
+  })
 
   return (
     <div className="dark:bg-boxdark-2 dark:text-bodydark">

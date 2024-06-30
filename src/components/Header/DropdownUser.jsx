@@ -9,7 +9,6 @@ const DropdownUser = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { logoutUser } = useLogout();
 
-  console.log('props.user.picture',props.user.picture)
   const handleLogout = () => {
     logoutUser();
   }

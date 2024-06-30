@@ -12,6 +12,7 @@ import Cookies from "js-cookie";
 import { useLogout } from "../../utility/Auth/Auth";
 import Navbar from "../../components/Navbar/Navbar";
 
+
 const Dashboard = () => {
 
   const { logoutUser } = useLogout();
@@ -37,7 +38,7 @@ const Dashboard = () => {
 
 
   return (
-    <DefaultLayout sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={user}>
+    <DefaultLayout user={user}>
       {/* <Navbar showLogo={false} isLoggedIn={true} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={user}/> */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 mt-10">
         <CardDataStats title="Total impressions" total="123.4k" rate="0.40%" levelUp>
