@@ -14,7 +14,7 @@ import Adcatagory from '../../components/CampaignFormElements/Adcatagory';
 const NewCampaign = () => {
   const [mcpv, setmCpv] = useState(1.45);
   const [budgeError, setBudgetError] = useState('');
-  const [showSkip, setShowSkip] = useState(true);
+  const [showSkip, setShowSkip] = useState(false);
 
   // modal fields and methods
   const [isVisible, setIsVisible] = useState(false);
@@ -44,6 +44,9 @@ const NewCampaign = () => {
   useEffect(() => {
     const setbudgetDateHeading = () => {
       if (budgetAndDates.budgetType && budgetAndDates.amount && budgetAndDates.startDate && budgetAndDates.endDate) {
+        if (budgetAndDates.budgetType==='Skippable engaging ads'){
+            setShowSkip(true)
+        }
         setBudgetDateHeading(
           `${budgetAndDates.budgetType} | ₹ ${budgetAndDates.amount} | From ${budgetAndDates.startDate} to ${budgetAndDates.endDate}`
         );
