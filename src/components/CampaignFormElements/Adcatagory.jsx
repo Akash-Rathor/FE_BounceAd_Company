@@ -6,6 +6,7 @@ const Adcatagory = ({ setAdType }) => {
     const [selectedType, setSelectedType] = useState('');
 
     const handleAdTypeChange = (type) => {
+        console.log('selectedType',type)
         setSelectedType(type);
         setAdType(type);
     };
@@ -13,7 +14,7 @@ const Adcatagory = ({ setAdType }) => {
     return (
         <div className='flex flex-row flex-wrap justify-evenly items-center space-x-2 gap-1'>
             <button
-                className={`flex flex-col justify-center items-center w-full md:w-1/3 h-50 px-2 border-2 border-slate-400 rounded-lg ${selectedType === 'High Engagement Non-Skippable' ? 'border-green-500 bg-gray-200' : 'opacity-60'} `}
+                className={`flex flex-col justify-center items-center w-full md:w-1/3 min-h-50 h-auto px-2 border-2 border-slate-400 rounded-lg ${selectedType === 'High Engagement Non-Skippable' ? 'border-green-600 border-3 bg-gray-200' : 'opacity-60 border-slate-400'} `}
                 onClick={() => handleAdTypeChange('High Engagement Non-Skippable')}>
                 <h2 className='p-2' style={{ fontSize: 14,fontWeight:800 }}>High Engagement Ads</h2>
                 <div className='flex flex-row justify-center items-center '>
@@ -24,7 +25,7 @@ const Adcatagory = ({ setAdType }) => {
                 </div>
             </button>
             <button
-                className={`flex flex-col justify-center items-center w-full md:w-1/3 h-50 px-2 border-2 border-slate-400 rounded-lg ${selectedType === 'Non-Skippable Ads' ? 'border-green-500 bg-gray-200' : 'opacity-60'}`}
+                className={`flex flex-col justify-center items-center w-full md:w-1/3 min-h-50 h-auto px-2 border-2 border-slate-400 rounded-lg ${selectedType === 'Non-Skippable Ads' ? 'border-green-600 border-3 bg-gray-200' : 'opacity-60 border-slate-400'}`}
                 onClick={() => handleAdTypeChange('Non-Skippable Ads')}>
                 <h2 className='p-2' style={{ fontSize: 14,fontWeight:800  }}>Non-skippable Ads</h2>
                 <div className='flex flex-row justify-center items-center'>
@@ -35,7 +36,7 @@ const Adcatagory = ({ setAdType }) => {
                 </div>
             </button>
             <button
-                className={`flex flex-col justify-center items-center w-full md:w-1/3 h-50 px-2 border-2 border-slate-400 rounded-lg ${selectedType === 'Skippable engaging ads' ? 'border-green-500 bg-gray-200' : 'opacity-60'}`}
+                className={`flex flex-col justify-center items-center w-full md:w-1/3 min-h-50 h-auto px-2 border-2 rounded-lg ${selectedType === 'Skippable engaging ads' ? 'border-green-600 border-3 bg-gray-200' : 'opacity-60 border-slate-400'}`}
                 onClick={() => handleAdTypeChange('Skippable engaging ads')}>
                 <h2 className='p-2' style={{ fontSize: 14,fontWeight:800  }}>Skippable engaging ads</h2>
                 <div className='flex flex-row justify-center items-center'>

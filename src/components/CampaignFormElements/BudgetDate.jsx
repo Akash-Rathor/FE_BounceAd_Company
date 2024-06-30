@@ -13,7 +13,7 @@ const BudgetDate = ({ setBudgetAndDates }) => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [data, setData] = useState({
-        startDate:startDate,endDate:endDate , budgetType:'',days:0
+        startDate:startDate,endDate:endDate , budgetType:'',days:0,dailyBudget:0
     });
     const [message, setMessage] = useState('');
 
@@ -54,8 +54,14 @@ const BudgetDate = ({ setBudgetAndDates }) => {
                 ...prev,
                 days: days
             }))
+            const x = budget/days;
+            const dailyBudget= x.toFixed(2);
+            setData(prev => ({
+                ...prev,
+                dailyBudget: dailyBudget
+            }))
             if (!data['budgetType'].toLowerCase().includes('daily')){
-                setBudgetMessage(`A ₹${budget} campaign total amount is similar to a ₹${budget/days} daily budget amount that runs for ${days} days.`);
+                setBudgetMessage(`A ₹${budget} campaign total amount is similar to a ₹${dailyBudget} daily budget amount that runs for ${days} days.`);
 
             }else{
                 setBudgetMessage(`For the ${days} days, you won't pay more than your daily budget times the average number of days in a month. Some days you might spend less than your daily budget, and on others you might spend up to twice as much.`);

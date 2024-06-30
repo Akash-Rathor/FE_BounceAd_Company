@@ -44,9 +44,6 @@ const NewCampaign = () => {
   useEffect(() => {
     const setbudgetDateHeading = () => {
       if (budgetAndDates.budgetType && budgetAndDates.amount && budgetAndDates.startDate && budgetAndDates.endDate) {
-        if (budgetAndDates.budgetType==='Skippable engaging ads'){
-            setShowSkip(true)
-        }
         setBudgetDateHeading(
           `${budgetAndDates.budgetType} | ₹ ${budgetAndDates.amount} | From ${budgetAndDates.startDate} to ${budgetAndDates.endDate}`
         );
@@ -60,41 +57,56 @@ const NewCampaign = () => {
   }, [demographyDetails]);
 
 
+  useEffect(() => {
+    console.log('budgetAndDates.budgetType',adType)
+    if (adType==='Skippable engaging ads'){
+        setShowSkip(true)
+    }else{
+      setShowSkip(false)
+    }
+  },[adType])
+
   const calCulateExpectedBidPrice = (amt,bidAmt) => {
     let val = null;
     if (adType==='Skippable engaging ads'){
-        if (amt < 5000 && bidAmt < 2.20) {
-            val = 2.20;
-          } else if (amt < 25000 && bidAmt < 1.92) {
-            val = 1.92;
-          } else if (amt < 30000 && bidAmt < 1.87) {
-            val = 1.87;
-          } else if (amt > 30000 && bidAmt < 1.74) {
-            val = 1.74;
+      if (!budgetAndDates.budgetType.toLowerCase().includes('daily')){
+        if (amt < 5000 && bidAmt < 0.25) {
+            val = 0.25;
+          } else if (amt < 25000 && bidAmt < 0.25) {
+            val = 0.25;
+          } else if (amt < 30000 && bidAmt < 0.25) {
+            val = 0.25;
+          } else if (amt > 30000 && bidAmt < 0.25) {
+            val = 0.25;
           }
+      }
     }
     if (adType==='Non-Skippable Ads'){
-        if (amt < 5000 && bidAmt < 2.20) {
-            val = 2.20;
-          } else if (amt < 25000 && bidAmt < 1.92) {
-            val = 1.92;
-          } else if (amt < 30000 && bidAmt < 1.87) {
-            val = 1.87;
-          } else if (amt > 30000 && bidAmt < 1.74) {
-            val = 1.74;
+      if (!budgetAndDates.budgetType.toLowerCase().includes('daily')){
+        if (amt < 5000 && bidAmt < 0.25) {
+            val = 0.25;
+          } else if (amt < 25000 && bidAmt < 0.25) {
+            val = 0.25;
+          } else if (amt < 30000 && bidAmt < 0.25) {
+            val = 0.25;
+          } else if (amt > 30000 && bidAmt < 0.25) {
+            val = 0.25;
           }
+        }
     }
     if (adType==='High Engagement Non-Skippable'){
-        if (amt < 5000 && bidAmt < 2.20) {
-            val = 2.20;
-          } else if (amt < 25000 && bidAmt < 1.92) {
-            val = 1.92;
-          } else if (amt < 30000 && bidAmt < 1.87) {
-            val = 1.87;
-          } else if (amt > 30000 && bidAmt < 1.74) {
-            val = 1.74;
+      if (!budgetAndDates.budgetType.toLowerCase().includes('daily')){
+        if (amt < 5000 && bidAmt < 25.13) {
+            val = 25.13;
+          } else if (amt < 25000 && bidAmt < 23.40) {
+            val = 23.40;
+          } else if (amt < 30000 && bidAmt < 22.22) {
+            val = 22.22;
+          } else if (amt > 30000 && bidAmt < 21.17) {
+            val = 21.17;
           }
     }
+  }
 
     return val;
   }
@@ -103,9 +115,10 @@ const NewCampaign = () => {
     if (!budgetAndDates.amount || budgetAndDates.amount === '') {
       setBudgetError('To check the detailed analysis of your Ad, please fill all the details');
     } else {
-      const amt = parseInt(budgetAndDates.amount, 10);
-      const bidAmt = parseInt(bid, 10);
-      let val = calCulateExpectedBidPrice(amt,bidAmt);
+      const amt = parseFloat(budgetAndDates.amount);
+      const bidAmt = parseFloat(bid);
+      const dailyBudget = budgetAndDates.amount;
+      let val = calCulateExpectedBidPrice(dailyBudget,bidAmt);
       if (val !== null) {
         setBudgetError(`Your bid might be too low for your campaign settings. You can improve your campaign's potential reach and performance by adjusting your bid to ₹${val}. Suggested based on your budget, campaign duration, targeting criteria, ad format, and estimated auction dynamics.`);
       } else {
@@ -163,7 +176,7 @@ const NewCampaign = () => {
                     </Accordion>
 
                     <Accordion title='Bid' value={`₹ ${bid}`} error={false}>
-                      <Bid setBid={setBid} />
+                      <Bid setBid={setBid} adType={adType} />
                     </Accordion>
 
                     <div className="flex justify-end m-2 space-x-5">
@@ -236,7 +249,7 @@ const NewCampaign = () => {
                             <div className='flex flex-col justify-center items-start'>
                               <h3 className='text-sm'>Average CPV</h3>
                               <div className='flex flex-row justify-center items-center'>
-                                <span>₹ 0.20</span>
+                                <span>₹ 0.25</span>
                                 <span className='px-1'> - </span>
                                 <span> ₹ 0.65</span>
                               </div>

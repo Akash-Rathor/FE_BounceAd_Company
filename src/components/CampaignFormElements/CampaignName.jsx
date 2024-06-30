@@ -21,7 +21,7 @@ const CampaignName = ({ setValueCallback }) => {
                 >
                     Campaign Name
                 </label>
-                <InputComponent getUpdatedValue={valueChange} Icon={<Icon />}/>
+                <InputComponent getUpdatedValue={valueChange} placeholder='Campaign Name' Icon={<Icon />}/>
             </div>
 
         </div>

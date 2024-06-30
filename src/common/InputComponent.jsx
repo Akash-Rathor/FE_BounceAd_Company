@@ -1,26 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
-const InputComponent = ({ getUpdatedValue , placeholder,Icon}) => {
+const InputComponent = ({ getUpdatedValue, placeholder, Icon, editable = true }) => {
+    const [val, setVal] = useState('');
 
     const valueChange = (event) => {
-        getUpdatedValue(event.target.value)
-    }
+        setVal(event.target.value);
+        getUpdatedValue(event.target.value);
+    };
+
+    useEffect(() => {
+        console.log('editable', editable);
+        if (!editable) {
+            setVal(0.25);
+            getUpdatedValue(0.25);
+        } else {
+            setVal('');
+        }
+    }, [editable]);
+
     return (
-    <div className="relative w-full">
-        <span className="absolute left-5 top-3">
-            {Icon}
-        </span>
-        <input
-                className="w-full rounded border border-stroke bg-gray py-3 pl-12 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+        <div className="relative w-full">
+            <span className="absolute left-5 top-3">
+                {Icon}
+            </span>
+            <input
+                className={`w-full rounded border border-stroke ${editable ? 'bg-slate-100 text-black' : 'bg-slate-500 text-white'} py-3 pl-12 pr-4.5 focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary`}
                 type="text"
                 name="fullName"
                 id="fullName"
                 placeholder={placeholder}
-                defaultValue=""
+                value={val}
                 onChange={valueChange}
+                disabled={!editable}
             />
-    </div>
-    )
-}
+        </div>
+    );
+};
 
 export default InputComponent;
