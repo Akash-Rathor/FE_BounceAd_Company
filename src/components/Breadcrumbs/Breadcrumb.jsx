@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 
 const Breadcrumb = ({ show = true, pageName, Button = null }) => {
 
-  console.log('Button',Button)
-
   return (
     show ? (
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

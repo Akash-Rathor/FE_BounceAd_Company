@@ -114,7 +114,7 @@ const NewCampaign = () => {
   useEffect(() => {
     if (!budgetAndDates.amount || budgetAndDates.amount === '') {
       setBudgetError('To check the detailed analysis of your Ad, please fill all the details');
-    } else {
+    }else {
       const amt = parseFloat(budgetAndDates.amount);
       const bidAmt = parseFloat(bid);
       const dailyBudget = budgetAndDates.amount;
