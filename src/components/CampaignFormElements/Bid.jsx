@@ -1,19 +1,21 @@
 import React,{useState,useEffect} from 'react'
 import InputComponent from '../../common/InputComponent'
 
-const Bid = ({setBid,adType}) => {
+const Bid = ({setBid,adType , budgetAndDates}) => {
 
   const [edit,setEdit] = useState(true);
   const [isCorrect,setIsCorrect] = useState(false)
   const [bidded,setBidded] = useState(0);
   const [error,setError] = useState('');
+  const [budgeError, setBudgetError] = useState('');
+  const [minPrice,setMinPrice] = useState(null);
 
   const handleMouseEnter = () => {
     setShowPopup(true);
   };
 
-  const updateUpdateBid = (val) => {
-    setBidded(val);
+  const updateUpdateBid = (minPrice) => {
+    setBidded(minPrice);
   };
 
 const handleMouseLeave = () => {
@@ -33,6 +35,81 @@ const handleMouseLeave = () => {
   const Icon = () =>(
     '₹'
   )
+  
+  const calCulateExpectedBidPrice = (adType,budgetAndDates,amt, bidAmt) => {
+    if (adType === 'Skippable engaging ads') {
+      if (!budgetAndDates.budgetType.toLowerCase().includes('daily')) {
+        if (amt < 5000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+        } else if (amt < 25000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+        } else if (amt < 30000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+        } else if (amt > 30000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+        }else{
+          setMinPrice(null);
+        }
+      }
+    }
+    if (adType === 'Non-Skippable Ads') {
+      if (!budgetAndDates.budgetType.toLowerCase().includes('daily')) {
+        if (amt < 5000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+  
+        } else if (amt < 25000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+  
+        } else if (amt < 30000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+  
+        } else if (amt > 30000 && bidAmt < 0.25) {
+          setMinPrice(0.25);
+  
+        }else{
+          setMinPrice(null);
+        }
+      }
+    }
+    if (adType === 'High Engagement Non-Skippable') {
+      if (!budgetAndDates.budgetType.toLowerCase().includes('daily')) {
+        if (amt < 5000 && bidAmt < 25.13) {
+          setMinPrice(25.13);
+  
+        } else if (amt < 25000 && bidAmt < 23.40) {
+          setMinPrice(23.40);
+  
+        } else if (amt < 30000 && bidAmt < 22.22) {
+          setMinPrice(22.22);
+  
+        } else if (amt > 30000 && bidAmt < 21.17) {
+          setMinPrice(21.17);
+  
+        }
+        else{
+          setMinPrice(null);
+        }
+      }
+    }
+  
+    return null;
+  }
+
+  useEffect(() => {
+    if (!budgetAndDates.amount || budgetAndDates.amount === '') {
+      setBudgetError('To check the detailed analysis of your Ad, please fill all the details');
+    } else {
+      // const amt = parseFloat(budgetAndDates.amount);
+      const bidAmt = parseFloat(bidded);
+      const dailyBudget = budgetAndDates.amount;
+      calCulateExpectedBidPrice(adType,budgetAndDates,dailyBudget, bidAmt);
+      if (minPrice !== null) {
+        setBudgetError(`Your bid might be too low for your campaign settings. You can improve your campaign's potential reach and performance by adjusting your bid to ₹${minPrice}. Suggested based on your budget, campaign duration, targeting criteria, ad format, and estimated auction dynamics.`);
+      } else {
+        setBudgetError('');
+      }
+    }
+  }, [bidded, budgetAndDates,adType,minPrice]);
 
   useEffect(() => {
     console.log('bidded,',bidded)
@@ -54,6 +131,10 @@ const handleMouseLeave = () => {
       <div className={!isCorrect ? `ring-1 ring-red-800 rounded-md p-1` : null}>
         <InputComponent getUpdatedValue={updateUpdateBid} placeholder='2.5' Icon={<Icon />} editable={edit}/>
       </div>
+      {budgeError &&
+        <div className='flex flex-row justify-center items-center z-20 bg-red-600 bg-opacity-30 py-1 px-4'>
+            <h1 className='text-sm text-red-600'>{budgeError}</h1>
+        </div>}
       <button className='text-blue-300' onMouseOver={handleMouseEnter} onMouseOut={handleMouseLeave}>See details</button>
       {showPopup && <p className='text-slate-600 bg-slate-300 p-2 rounded-lg bg-opacity-30 opacity-70' style={{ fontSize: 12 }}>With Target CPV (cost-per-view), 
         you set the average amount you're willing to pay for views for this campaign. From the Target CPV you set, we'll optimize bids to help get as many views as possible.
@@ -63,4 +144,7 @@ const handleMouseLeave = () => {
   )
 }
 
-export default Bid
+export default Bid;
+
+
+

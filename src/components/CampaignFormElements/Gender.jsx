@@ -4,7 +4,7 @@ import CheckBox from '../../common/CheckBox';
 const checkBoxData = [
   { value: 'Male' },
   { value: 'Female' },
-  { value: 'Unknown' },
+  { value: 'Any' },
 ];
 
 const Gender = ({ setGender }) => {

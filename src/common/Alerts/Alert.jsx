@@ -12,7 +12,7 @@ const Alert = ({ title, message, okayText, okayColor, setIsVisible, setClickOkay
   };
 
   return (
-    <div className="relative z-10 bg-[#00000040]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div className="relative z-99 bg-[#00000040]" aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
       <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
