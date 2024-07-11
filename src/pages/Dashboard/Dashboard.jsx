@@ -25,7 +25,7 @@ const Dashboard = () => {
     const token = Cookies.get('token');
     const getUser = () => {
       const u = Cookies.get('user');
-      console.log(u)
+      // console.log(u)
       setUser(u);
     }
     if (!token) {

@@ -42,19 +42,19 @@ const Login = () => {
 
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
-      console.log('onSuccess triggered');
-      console.log('Token Response:', tokenResponse);
+      // console.log('onSuccess triggered');
+      // console.log('Token Response:', tokenResponse);
       try {
         const userInfo = await fetchUserInfo(tokenResponse.access_token);
-        console.log('User Info fetched:', userInfo);
+        // console.log('User Info fetched:', userInfo);
         await loginUser(tokenResponse.access_token, userInfo);
         // setUserInfo(userInfo);
       } catch (error) {
-        console.error('Error during login process:', error);
+        // console.error('Error during login process:', error);
       }
     },
     onError: (error) => {
-      console.log('onError triggered', error); // Log if there's an error
+      // console.log('onError triggered', error); // Log if there's an error
     },
   });
 
@@ -81,8 +81,8 @@ const Login = () => {
 
     // Handle form submission logic here
     setMessage('Form submitted successfully!');
-    console.log('Email:', email);
-    console.log('Password:', password);
+    // console.log('Email:', email);
+    // console.log('Password:', password);
   };
 
   return (

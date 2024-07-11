@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
-import Alert from '../../common/Alerts/Alert';
+import PopUpAlert from '../../common/Alerts/PopUpAlert';
 import Accordion from '../../common/accordian/Accordian';
 import CampaignName from '../../components/CampaignFormElements/CampaignName';
 import BidStrategy from '../../components/CampaignFormElements/BidStrategy';
@@ -12,19 +12,19 @@ import Bid from '../../components/CampaignFormElements/Bid';
 import Adcatagory from '../../components/CampaignFormElements/Adcatagory';
 import YourAd from '../../components/CampaignFormElements/YourAd/YourAd';
 import Adformat from '../../components/CampaignFormElements/Adformat';
-
+import Loader from '../../common/Loader/index';
+import Success from '../../common/Alerts/Success';
 
 const NewCampaign = () => {
-  // const [mcpv, setmCpv] = useState(1.45);
-  // const [budgeError, setBudgetError] = useState('');
   const [showSkip, setShowSkip] = useState(false);
 
   // modal fields and methods
   const [isVisible, setIsVisible] = useState(false);
-  const [clickOkay, setClickOkay] = useState(false);
   const [modaltitle, setModalTitle] = useState('');
   const [modalMsg, setModalMsg] = useState('Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.');
   const [modalColor, setModalColor] = useState('success');
+  const [isLoading,setIsLoading] = useState(false);
+  const [successVisibility,setSuccessVisibility] = useState(false);
 
   const cancelForm = () => {
     setIsVisible(true);
@@ -50,13 +50,12 @@ const NewCampaign = () => {
   const [adFormat, setAdFormat] = useState('');
 
   useEffect(() => {
-    console.log('bidStrategy',bidStrategy,budgetAndDates)
     const setbudgetDateHeading = () => {
       if (
         bidStrategy === 'Maximum CPV' &&
         budgetAndDates.budgetType &&
         budgetAndDates.amount &&
-        budgetAndDates.startDate &&
+        // budgetAndDates.startDate &&
         budgetAndDates.endDate
       ) {
         setBudgetDateHeading(
@@ -80,7 +79,6 @@ const NewCampaign = () => {
 
 
   useEffect(() => {
-    console.log('budgetAndDates.budgetType', adType)
     if (adType === 'Skippable engaging ads') {
       setShowSkip(true)
     } else {
@@ -101,23 +99,53 @@ const NewCampaign = () => {
 
   // submit form
   const submitForm = () => {
-    console.log('Submit form clicked')
+    // console.log('Submit form clicked')
+    setSuccessVisibility(true);
   }
   //  submit form end
+
+  const setClickOkay = () => {
+    setIsVisible(false)
+    setIsLoading(true);
+
+    setCampaignname('')
+    setBidStrategy('')
+    setBudgetAndDates({})
+    setBudgetDateHeading('')
+    setLocation('')
+    setDemographyDetails({ age: null, gender: null })
+    setDemographyHeading('')
+    setBid('')
+    setAdType('')
+    setUploadedFile('')
+    setVideoUrl('')
+    setAdFormat('')
+
+    setIsLoading(false);
+  }
 
   return (
     <DefaultLayout>
       {isVisible &&
-        <Alert
+        <PopUpAlert
           title={modaltitle}
           message={modalMsg}
           okayText='Okay'
           okayColor={modalColor}
           setClickOkay={setClickOkay}
           setIsVisible={setIsVisible}
+        />
+        }
+        {successVisibility && <Success
+          title={modaltitle}
+          message={modalMsg}
+          setIsVisible={ () => setSuccessVisibility(false)}
+          reDirectTo=''
         />}
+
         <div className="mx-auto max-w-360">
           <Breadcrumb pageName="Add New Campaign" />
+          {isLoading ? <Loader /> :
           <div className="flex flex-col xl:flex-row gap-8">
             <div className="flex-1">
               <div className="border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark rounded-xl">
@@ -178,6 +206,7 @@ const NewCampaign = () => {
             />
 
           </div>
+}
         </div>
     </DefaultLayout>
   );

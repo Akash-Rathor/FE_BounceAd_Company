@@ -6,6 +6,7 @@ const DatePicker = () => {
     // Init flatpickr
     flatpickr('.form-datepicker', {
       mode: 'single',
+      minDate:'today',
       static: true,
       monthSelectorType: 'static',
       dateFormat: 'M j, Y',

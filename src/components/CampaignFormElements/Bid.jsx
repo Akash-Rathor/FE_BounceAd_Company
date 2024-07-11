@@ -37,6 +37,7 @@ const handleMouseLeave = () => {
   )
   
   const calCulateExpectedBidPrice = (adType,budgetAndDates,amt, bidAmt) => {
+    // console.log('adType,budgetAndDates,amt,bidAmt==',adType,budgetAndDates,amt,bidAmt)
     if (adType === 'Skippable engaging ads') {
       if (!budgetAndDates.budgetType.toLowerCase().includes('daily')) {
         if (amt < 5000 && bidAmt < 0.25) {
@@ -72,7 +73,7 @@ const handleMouseLeave = () => {
       }
     }
     if (adType === 'High Engagement Non-Skippable') {
-      if (!budgetAndDates.budgetType.toLowerCase().includes('daily')) {
+      // if (!budgetAndDates.budgetType.toLowerCase().includes('daily')) {
         if (amt < 5000 && bidAmt < 25.13) {
           setMinPrice(25.13);
   
@@ -89,13 +90,14 @@ const handleMouseLeave = () => {
         else{
           setMinPrice(null);
         }
-      }
+      // }
     }
   
     return null;
   }
 
   useEffect(() => {
+    // console.log('adType,minPrice,bidded,budgetAndDates',adType,minPrice,bidded,budgetAndDates)
     if (!budgetAndDates.amount || budgetAndDates.amount === '') {
       setBudgetError('To check the detailed analysis of your Ad, please fill all the details');
     } else {
@@ -112,7 +114,7 @@ const handleMouseLeave = () => {
   }, [bidded, budgetAndDates,adType,minPrice]);
 
   useEffect(() => {
-    console.log('bidded,',bidded)
+    // console.log('bidded,',bidded)
     if((adType!=='High Engagement Non-Skippable' && parseFloat(bidded)<0.25) || !bidded){
       setIsCorrect(false);
       setError('Bid amount can not be less than ₹0.25')

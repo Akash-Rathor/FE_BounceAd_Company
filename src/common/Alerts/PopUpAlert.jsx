@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Alert = ({ title, message, okayText, okayColor, setIsVisible, setClickOkay }) => {
+const PopUpAlert = ({ title, message, okayText, okayColor, setIsVisible, setClickOkay }) => {
 
   const cancel = () => {
     setIsVisible(false);
@@ -69,4 +69,4 @@ const Alert = ({ title, message, okayText, okayColor, setIsVisible, setClickOkay
   );
 };
 
-export default Alert;
+export default PopUpAlert;

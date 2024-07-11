@@ -30,7 +30,7 @@ const Dropdown = ({ title, dataset, selectFunction }) => {
   });
 
   const updateValue = (value) => {
-    console.log('value',value)
+    // console.log('value',value)
     setSelect(value);
     selectFunction(value);
     setDropdownOpen(false);

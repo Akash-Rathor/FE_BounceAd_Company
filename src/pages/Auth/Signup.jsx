@@ -46,7 +46,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('inside')
+    // console.log('inside')
     // Validate form inputs
     if (!email || !password || !confirmPassword || !phone || !name) {
       setMessage('Please fill in all fields.');
@@ -64,8 +64,8 @@ const Signup = () => {
     }
     // Handle form submission logic here
     setMessage('Form submitted successfully!');
-    console.log('Email:', email);
-    console.log('Password:', password);
+    // console.log('Email:', email);
+    // console.log('Password:', password);
   };
 
   const handlePhoneChange = (e) => {

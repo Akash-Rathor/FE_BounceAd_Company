@@ -4,7 +4,7 @@ import SidebarLinkGroup from "./SidebarLinkGroup"
 import Logo from "../../images/logo/logo.png"
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen,user={} }) => {
-  console.log('setSidebarOpen',sidebarOpen,setSidebarOpen)
+  // console.log('setSidebarOpen',sidebarOpen,setSidebarOpen)
   const location = useLocation()
   const { pathname } = location
 

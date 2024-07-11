@@ -217,6 +217,7 @@ const BudgetDate = ({ setBudgetAndDates, bidStrategy }) => {
                     dateFormat='dd/MM/yyyy'
                     onChange={(date) => setDates('startDate', date)}
                     showPreviousMonths={false}
+                    minDate={new Date()}
                   />
                   <p className='font-semibold'>End Date</p>
                   <DatePicker
@@ -226,6 +227,7 @@ const BudgetDate = ({ setBudgetAndDates, bidStrategy }) => {
                     dateFormat="dd/MM/yyyy"
                     onChange={(date) => setDates('endDate', date)}
                     showPreviousMonths={false}
+                    minDate={new Date()}
                   />
                 </div>
                   {budgetMessage && <p style={{ fontSize: 12 }} className='p-2 bg-green-500 bg-opacity-30 text-green-900 rounded-md mt-5'>{budgetMessage}</p>}

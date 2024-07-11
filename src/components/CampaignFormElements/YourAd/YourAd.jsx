@@ -6,7 +6,13 @@ import SeatBackLaminated from './Adtypes/SeatBackLaminated';
 import CarCover from './Adtypes/CarCover';
 
 const YourAd = ({ showSkip, fileUrl, setUploadedFile, campaignName, budgeError = null, cancelForm, submitForm, adFormat }) => {
-  console.log('showSkip', showSkip)
+
+
+  const submitform = () => {
+    submitForm();
+  }
+
+  // console.log('showSkip', showSkip)
   return (
     <div className="flex-1 xl:flex-none xl:w-1/3">
       <div className="border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark rounded-3xl">
@@ -40,7 +46,7 @@ const YourAd = ({ showSkip, fileUrl, setUploadedFile, campaignName, budgeError =
 
           <div className="flex justify-end m-2 space-x-5">
             <button className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white" onClick={cancelForm} type="button" >Cancel</button>
-            <button className="flex justify-center rounded bg-opacity-90 bg-primary py-2 px-6 font-bold  text-white hover:bg-opacity-100" type="submit">Save</button>
+            <button className="flex justify-center rounded bg-opacity-90 bg-primary py-2 px-6 font-bold  text-white hover:bg-opacity-100" type="submit" onClick={submitform}>Save</button>
           </div>
 
         </div>

@@ -11,7 +11,7 @@ const Location = ({ setLocation }) => {
             .filter(item => item.selected === true)
             .map(item => item.value)
             .join(', ');
-            console.log('selectedLocations',selectedLocations)
+            // console.log('selectedLocations',selectedLocations)
             // setSelectedLocations(selectedValues);
             setLocation(selectedValues);
             

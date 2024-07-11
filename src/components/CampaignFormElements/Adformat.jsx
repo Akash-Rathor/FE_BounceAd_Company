@@ -50,7 +50,7 @@ const AdFormat = ({ setAdFormat }) => {
         />
       ))}
     </div>
-      {message && <div className='bg-green-500 bg-opacity-20 px-2 mb-5 mt-10 rounded-md'>
+      {message && <div className='bg-green-500 bg-opacity-20 px-2 py-2 mb-5 mt-10 rounded-md text-xs opacity-60'>
         <h1 className='text-green-900'>{message}</h1>
       </div>}
       </>

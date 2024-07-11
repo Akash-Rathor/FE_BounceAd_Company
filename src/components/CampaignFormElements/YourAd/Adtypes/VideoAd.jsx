@@ -7,7 +7,7 @@ const VideoAd = ({fileUrl}) => {
   const [error,setError] = useState('');
 
   const handleDuration = (dur) => {
-    console.log('duration',dur)
+    // console.log('duration',dur)
     if(dur<=20){
       setDuration(dur);
       setError('')

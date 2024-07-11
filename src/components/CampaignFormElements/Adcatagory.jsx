@@ -6,7 +6,7 @@ const Adcatagory = ({ setAdType }) => {
     const [selectedType, setSelectedType] = useState('');
 
     const handleAdTypeChange = (type) => {
-        console.log('selectedType',type)
+        // console.log('selectedType',type)
         setSelectedType(type);
         setAdType(type);
     };

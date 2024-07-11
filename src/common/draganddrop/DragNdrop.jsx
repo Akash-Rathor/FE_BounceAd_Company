@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloudUpload } from "react-icons/ai";
 import { MdClear } from "react-icons/md";
 import "./DragNdrop.css";
-import Alert from "../Alerts/Alert";
+import PopUpAlert from "../Alerts/PopUpAlert";
 
 const DragNdrop = ({ onFilesSelected, width, height, adFormat }) => {
   const [file, setFile] = useState(null);
@@ -55,7 +55,7 @@ const DragNdrop = ({ onFilesSelected, width, height, adFormat }) => {
   return (
     <>
       {isVisible &&
-      <Alert
+      <PopUpAlert
         title='Invalid File format'
         message='Unsupported file type. Please select a file of the supported type.'
         okayText='Okay'
