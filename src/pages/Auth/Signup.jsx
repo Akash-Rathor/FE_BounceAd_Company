@@ -95,7 +95,7 @@ const Signup = () => {
               </Link>
 
               <p className="2xl:px-20 text-title-md font-semibold" style={{fontFamily:'sans-serif'}}>
-              Bring your brand to life with <br />video Ads
+              Bring your brand to life with <br />Ads
               </p>
 
               <span className="mt-15 inline-block">
