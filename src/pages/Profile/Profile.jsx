@@ -4,6 +4,8 @@ import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import CheckBox from '../../common/CheckBox';
+import Loader from '../../common/Loader/index';
+
 
 const Profile = () => {
 
@@ -46,13 +48,13 @@ const Profile = () => {
       setMessage('Phone number must be 10 digits.');
     }
   };
-  
+
   useEffect(() => {
     if (phoneLocalState !== '') {
       updateValue('mobile', phoneLocalState); // Update global state after validation
     }
   }, [phoneLocalState]);
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,11 +76,11 @@ const Profile = () => {
                   <path fill-rule="evenodd" d="M7.5 4.586A2 2 0 0 1 8.914 4h6.172a2 2 0 0 1 1.414.586L17.914 6H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1.086L7.5 4.586ZM10 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm2-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" clip-rule="evenodd" />
                 </svg>
                 <input
-                id="fileInput"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={uploadImage}
-              />
+                  id="fileInput"
+                  type="file"
+                  style={{ display: 'none' }}
+                  onChange={uploadImage}
+                />
               </button>
             </div>
             <div>
@@ -113,10 +115,11 @@ const Profile = () => {
                       </span>
                       <input
                         type="text"
-                        value={data.phone}
+                        value={data.mobile}
                         onChange={handlePhoneChange}
                         placeholder="Enter Phone number"
-                        className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-12 pr-4 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        className={`w-full rounded-lg border border-stroke py-4 pl-12 pr-4 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary ${true ? 'bg-slate-300' : 'bg-transparent'}`}
+                        disabled={true}
                       />
                     </div>
                   </div>
@@ -130,7 +133,8 @@ const Profile = () => {
                     value={data.email}
                     onChange={(e) => updateValue('email', e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    className={`w-full rounded-lg border border-stroke py-4 pl-12 pr-4 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary ${true ? 'bg-slate-300' : 'bg-transparent'}`}
+                    disabled={true}
                   />
                   <span className="absolute right-4 top-4">
                     <svg
@@ -208,11 +212,11 @@ const Profile = () => {
 
             </div>
             <div className="flex spce-x-5 mt-6 text-center">
-                <CheckBox title="Receive promotion, offers and cummunications from us. God promise, we'll not spam you"
-                onCheckboxChange={() => updateValue('isPromotionChecked',!data.isPromotionChecked)}
+              <CheckBox title="Receive promotion, offers and cummunications from us. God promise, we'll not spam you"
+                onCheckboxChange={() => updateValue('isPromotionChecked', !data.isPromotionChecked)}
                 isChecked={data.isPromotionChecked}
                 disabled={false}
-                textSize='xs'/>
+                textSize='xs' />
             </div>
           </div>
         </form>

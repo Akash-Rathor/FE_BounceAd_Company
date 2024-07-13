@@ -7,6 +7,7 @@ function useLogin() {
     const navigate = useNavigate();
   
     const loginUser = async(token,userInfo) => {
+      console.log('token,userInfo',token,userInfo)
       Cookies.set('token', token, { expires: 1, secure: true });
       Cookies.set('user', JSON.stringify(userInfo), { expires: 1, secure: true });
       navigate('/dashboard', { state: { userInfo } });

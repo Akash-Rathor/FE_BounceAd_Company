@@ -1,9 +1,15 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "skipLibCheck": true,
+
+    // material ui path
+    "paths": {
+      "@mui/material/*": ["node_modules/@mui/material/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

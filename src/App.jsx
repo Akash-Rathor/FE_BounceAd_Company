@@ -13,7 +13,7 @@ import NewCampaign from './pages/Campaigns/NewCampaign';
 import Signup from './pages/Auth/Signup';
 import EditCampaign from './pages/Campaigns/EditCampaign';
 import BillingHistory from './pages/Billing/BillingHistory';
-
+import Error505 from './pages/Error/Error505';
 
 const router = createBrowserRouter([
   { path: '/', element: <><Navbar  showLogo={true}/><Home /></> },
@@ -27,6 +27,7 @@ const router = createBrowserRouter([
   { path: '/campaign/new', element: <NewCampaign /> },
   { path: '/campaign/Edit/:name', element: <EditCampaign /> },
   { path: '/billings', element: <BillingHistory /> },
+  { path: '/Error/page/505', element: <Error505 /> },
 ]);
 
 function App() {

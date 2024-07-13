@@ -6,18 +6,28 @@ import { useLogin } from '../../utility/Auth/Auth';
 import Cookies from 'js-cookie';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import loginImage from '../../assets/images/login.svg';
+import useApiCalls from '../../utility/APICalls';
+import Loader from '../../common/Loader';
+import PopUpAlert from '../../common/Alerts/PopUpAlert';
 
 const Login = () => {
 
   const navigate = useNavigate();
   const { loginUser } = useLogin();
-
+  const apicalls = useApiCalls();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [popupHandling, setPopUpHandling] = useState({
+    title: 'Registration Error',
+    message: '',
+    okayText: 'Okay',
+    okayColor: 'red-600',
+  });
 
   useEffect(() => {
     const token = Cookies.get('token');
@@ -25,6 +35,32 @@ const Login = () => {
       navigate('/dashboard')
     }
   }, [navigate])
+
+
+  const callApi = async () => {
+    setIsLoading(true);
+    const payload = { username:email, password:password };
+    // console.log('payload',payload)
+    try {
+      const response = await apicalls('api/login', 'POST', payload);
+      const respData = response.data;
+      if (response.status === 201 || response.status === 200) {
+        if (respData.data?.session?.token) {
+          loginUser(respData.data?.session?.token, respData.data.user);
+        } else {
+          setPopUpHandling(prev => ({ ...prev, message: respData.msg }));
+          setIsVisible(true);
+        }
+      } else {
+        throw new Error(respData.msg);
+      }
+    } catch (error) {
+      setPopUpHandling(prev => ({ ...prev, message: error.message }));
+      setIsVisible(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const fetchUserInfo = async (accessToken) => {
     try {
@@ -67,22 +103,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validate form inputs
     if (!email || !password) {
       setMessage('Please fill in all fields.');
       return;
     }
 
-    // if (password !== confirmPassword) {
-    //   setMessage('Passwords do not match.');
-    //   return;
-    // }
+    callApi();
 
-    // Handle form submission logic here
-    setMessage('Form submitted successfully!');
-    // console.log('Email:', email);
-    // console.log('Password:', password);
   };
 
   return (
@@ -101,20 +128,32 @@ const Login = () => {
                 {/* <img className="dark:hidden" src={LogoDark} alt="Logo" /> */}
               </Link>
 
-              <p className="2xl:px-20 text-xl font-semibold" style={{fontFamily:'sans-serif'}}>
+              <p className="2xl:px-20 text-xl font-semibold" style={{ fontFamily: 'sans-serif' }}>
                 Business growth starts here
               </p>
 
               <span className="mt-15 inline-block">
-                  <img src={loginImage} alt='signup' className='w-100'/>
+                <img src={loginImage} alt='signup' className='w-100' />
               </span>
             </div>
           </div>
 
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
-            <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              {/* <span className="block font-medium mb-10" style={{fontFamily:'sans-serif'}}>Start for free</span> */}
+            {isLoading ? <Loader /> 
+            : 
+            isVisible ? 
+            <PopUpAlert
+              title={popupHandling.title}
+              message={popupHandling.message}
+              setIsVisible={setIsVisible}
+              okayText={popupHandling.okayText}
+              okayColor={popupHandling.okayColor}
+              setClickOkay={() => setIsVisible(false)}
+            /> 
+            
+            : 
 
+            <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
@@ -246,6 +285,7 @@ const Login = () => {
                 </p>
               </div>
             </div>
+            }
           </div>
         </div>
       </div>
