@@ -10,7 +10,7 @@ const Header = (props) => {
 
   return (
     <>
-    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
+    <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-lg dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
         <div className="flex items-center gap-2 sm:gap-4">
           {/* <!-- Hamburger Toggle BTN --> */}
@@ -64,25 +64,15 @@ const Header = (props) => {
 
         <div className="flex items-center gap-3 2xsm:gap-7">
           <ul className="flex items-center gap-2 2xsm:gap-4">
-            {/* <!-- Dark Mode Toggler --> */}
-            {/* <DarkModeSwitcher /> */}
-            {/* <!-- Dark Mode Toggler --> */}
 
             {/* <!-- Notification Menu Area --> */}
-            {/* <DropdownNotification /> */}
+            <DropdownNotification />
             {/* <!-- Notification Menu Area --> */}
 
-            {/* <!-- Chat Notification Area --> */}
-            {/* <DropdownMessage /> */}
-            {/* <!-- Chat Notification Area --> */}
           </ul>
 
           {/* <!-- User Area --> */}
-          {!props.isLoggedIn && <Link to='/login' ><button className="rounded-lg bg-gray py-2 px-4 text-lg font-medium justify-center items-center text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark" >
-              Login
-            </button>
-            </Link>}
-            
+          {!props.isLoggedIn && <Link to='/login' ><button className="rounded-lg bg-gray py-2 px-4 text-lg font-medium justify-center items-center text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark" >Login</button></Link>}
           {props.isLoggedIn && <DropdownUser user={props.user}/>}
           {/* <!-- User Area --> */}
         </div>

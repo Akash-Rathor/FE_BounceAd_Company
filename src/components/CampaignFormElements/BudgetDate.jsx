@@ -60,7 +60,7 @@ const BudgetDate = ({ setBudgetAndDates, bidStrategy }) => {
     } else if (data.budgetType.toLowerCase().includes('total')) {
       setMessage('Campaign total budget represents your total spend for the duration of the campaign');
     } else {
-      setMessage(`For the duration in months and selected number of Places / Cabs you'll not pay anything extra and your campaign amount will be calculated based on these only and have a `);
+      setMessage(`Your campaign amount will be calculated based on the number of months you select and number of places/cabs you want your ad to be displayed.`);
     }
   }, [data.budgetType]);
 

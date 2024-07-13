@@ -11,6 +11,9 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Campaigns from './pages/Campaigns/Campaigns';
 import NewCampaign from './pages/Campaigns/NewCampaign';
 import Signup from './pages/Auth/Signup';
+import EditCampaign from './pages/Campaigns/EditCampaign';
+import BillingHistory from './pages/Billing/BillingHistory';
+
 
 const router = createBrowserRouter([
   { path: '/', element: <><Navbar  showLogo={true}/><Home /></> },
@@ -22,6 +25,8 @@ const router = createBrowserRouter([
   { path: '/dashboard', element: <Dashboard /> },
   { path: '/campaigns', element: <Campaigns /> },
   { path: '/campaign/new', element: <NewCampaign /> },
+  { path: '/campaign/Edit/:name', element: <EditCampaign /> },
+  { path: '/billings', element: <BillingHistory /> },
 ]);
 
 function App() {

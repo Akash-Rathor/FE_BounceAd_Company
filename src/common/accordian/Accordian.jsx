@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const Accordion = ({ children ,title,value=null,subType=false,error=false}) => {
+const Accordion = ({ children ,title,value=null,subType=false,error=false,disable=false}) => {
   return (
     <section className="relative z-20 overflow-hidden bg-white dark:bg-dark py-2 px-2">
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4 h-auto">
-            <AccordionItem title={title} value={value} subType={subType} error={error}>{children}</AccordionItem>
+            <AccordionItem title={title} value={value} subType={subType} disable={disable} error={error}>{children}</AccordionItem>
           </div>
         </div>
       </div>
@@ -16,12 +16,14 @@ const Accordion = ({ children ,title,value=null,subType=false,error=false}) => {
 
 export default Accordion;
 
-const AccordionItem = ({ title, value,subType,error,children }) => {
+const AccordionItem = ({ title, value,subType,disable,error,children }) => {
   const [active, setActive] = useState(false);
 
   const handleToggle = (event) => {
     event.preventDefault();
-    setActive(!active);
+    if (!disable){
+      setActive(!active);
+    }
   };
 
   return (

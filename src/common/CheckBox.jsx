@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CheckBox = ({ title, isChecked, onCheckboxChange ,disabled}) => {
+const CheckBox = ({ title, isChecked, onCheckboxChange ,disabled,textSize='sm'}) => {
   return (
     <div>
       <label
@@ -26,7 +26,7 @@ const CheckBox = ({ title, isChecked, onCheckboxChange ,disabled}) => {
             ></span>
           </div>
         </div>
-        <p className={disabled ? "text-black text-opacity-50" : "text-blue-800 font-semibold"}>
+        <p className={disabled ? `text-black font-medium text-opacity-50 text-${textSize}` : `text-blue-800 font-medium text-${textSize}`}>
           {title}
           </p>
       </label>

@@ -212,7 +212,7 @@ const Profile = () => {
                 onCheckboxChange={() => updateValue('isPromotionChecked',!data.isPromotionChecked)}
                 isChecked={data.isPromotionChecked}
                 disabled={false}
-                />
+                textSize='xs'/>
             </div>
           </div>
         </form>

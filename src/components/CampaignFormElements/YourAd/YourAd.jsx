@@ -5,7 +5,7 @@ import ImpressionValue from './ImpressionValue';
 import SeatBackLaminated from './Adtypes/SeatBackLaminated';
 import CarCover from './Adtypes/CarCover';
 
-const YourAd = ({ showSkip, fileUrl, setUploadedFile, campaignName, budgeError = null, cancelForm, submitForm, adFormat }) => {
+const YourAd = ({ showSkip, fileUrl, setUploadedFile, campaignName, budgeError = null, cancelForm, submitForm, adFormat,edit=false }) => {
 
 
   const submitform = () => {
@@ -39,13 +39,17 @@ const YourAd = ({ showSkip, fileUrl, setUploadedFile, campaignName, budgeError =
             {/* Outer seat cover ad */}
 
           <div className="overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 justify-center flex flex-col space-y-2 my-5">
-            <DragNdrop onFilesSelected={setUploadedFile} adFormat={adFormat} />
+            {!edit && <DragNdrop onFilesSelected={setUploadedFile} adFormat={adFormat} />}
             <h3 className="font-bold tracking-wide text-center text-gray-800 dark:text-white">{campaignName}</h3>
             <ImpressionValue budgeError={budgeError} />
           </div>
 
           <div className="flex justify-end m-2 space-x-5">
+            {edit ? 
+            <button className="flex justify-center bg-red-600 rounded border border-stroke py-2 px-6 font-medium text-white hover:shadow-1 dark:border-strokedark" onClick={cancelForm} type="button" >Pause Ad</button>
+            :
             <button className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white" onClick={cancelForm} type="button" >Cancel</button>
+            }
             <button className="flex justify-center rounded bg-opacity-90 bg-primary py-2 px-6 font-bold  text-white hover:bg-opacity-100" type="submit" onClick={submitform}>Save</button>
           </div>
 
