@@ -8,8 +8,8 @@ function useLogin() {
   
     const loginUser = async(token,userInfo) => {
       console.log('token,userInfo',token,userInfo)
-      Cookies.set('token', token, { expires: 1, secure: true });
-      Cookies.set('user', JSON.stringify(userInfo), { expires: 1, secure: true });
+      Cookies.set('token', token, { expires: 1, secure: false,sameSite: 'Lax' });
+      Cookies.set('user', JSON.stringify(userInfo), { expires: 1, secure: false,sameSite: 'Lax' });
       console.log('token and userInfo set in cookies')
       navigate('/dashboard', { state: { userInfo } });
     };

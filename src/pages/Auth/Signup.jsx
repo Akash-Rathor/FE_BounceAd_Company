@@ -128,7 +128,7 @@ const Signup = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter full name"
-                        className="w-full rounded-lg border py-4 pl-6 pr-10"
+                        className="w-full rounded-lg border py-4 pl-6 pr-10 border-slate-300"
                       />
                     </div>}
                     {!isVisible && <div className="mb-4">
@@ -138,7 +138,7 @@ const Signup = () => {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="Enter Phone number"
-                        className="w-full rounded-lg border py-4 pl-6 pr-10"
+                        className="w-full rounded-lg border py-4 pl-6 pr-10 border-slate-300"
                       />
                     </div>}
                     {!isVisible && <div className="mb-4">
@@ -148,7 +148,7 @@ const Signup = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
-                        className="w-full rounded-lg border py-4 pl-6 pr-10"
+                        className="w-full rounded-lg border py-4 pl-6 pr-10 border-slate-300"
                       />
                     </div>}
                     {!isVisible && <div className="mb-4">
@@ -158,7 +158,7 @@ const Signup = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Enter your password"
-                        className="w-full rounded-lg border py-4 pl-6 pr-10"
+                        className="w-full rounded-lg border py-4 pl-6 pr-10 border-slate-300"
                       />
                     </div>}
                     {!isVisible && <div className="mb-6">
@@ -168,7 +168,7 @@ const Signup = () => {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirm your password"
-                        className="w-full rounded-lg border py-4 pl-6 pr-10"
+                        className="w-full rounded-lg border py-4 pl-6 pr-10 border-slate-300"
                       />
                     </div>}
                     {!isVisible && <div className="flex justify-end">
