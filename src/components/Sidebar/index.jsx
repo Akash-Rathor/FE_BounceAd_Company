@@ -50,14 +50,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white border-r-2 shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <NavLink to="/">
-          <img src={Logo} alt="Logo" />
+          <img src={Logo} alt="Logo" className="drop-shadow-lg bg-black p-2 rounded-lg"/>
         </NavLink>
 
         <button
@@ -87,7 +87,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
       <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
         <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
+            <h3 className="mb-4 ml-4 text-sm font-semibold text-black">
               MENU
             </h3>
 
@@ -104,9 +104,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                   <React.Fragment>
                     <NavLink
                       to="/dashboard"
-                      className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                         (pathname === "/dashboard" || pathname.includes("dashboard")) &&
-                        "bg-graydark dark:bg-meta-4"
+                        "bg-graydark dark:bg-meta-4 text-white"
                       }`}
                       onClick={() => {
                         sidebarExpanded ? handleClick() : setSidebarExpanded(true);
@@ -155,9 +155,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                   <React.Fragment>
                     <NavLink
                       to="#"
-                      className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4  ${
                         (pathname === "/campaign/new" || pathname === "/campaigns") &&
-                        "bg-graydark dark:bg-meta-4"
+                        "bg-graydark dark:bg-meta-4 text-white"
                       }`}
                       onClick={() => {
                         setSidebarExpanded(true); // Always expand sidebar when clicking on parent item
@@ -165,7 +165,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                       }}
                     >
                       <svg
-                        className="w-6 h-6 text-gray-800 dark:text-white"
+                        className="w-6 h-6 text-slate-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -201,13 +201,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                       </svg>
                     </NavLink>
                     <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
-                      <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                      <ul className="mt-4 mb-5.5 flex flex-col gap-3 pl-6 space-y-2">
                         <li>
                           <NavLink
                             to="/campaign/new"
                             className={({ isActive }) =>
-                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white " +
-                              (isActive && "!text-white")
+                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-slate-300  duration-300 ease-in-out hover:text-slate-800 " +
+                              (isActive && "!text-white bg-meta-4 p-2 ")
                             }
                           >
                             Start New
@@ -217,8 +217,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                           <NavLink
                             to="/campaigns"
                             className={({ isActive }) =>
-                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white " +
-                              (isActive && "!text-white")
+                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-slate-300  duration-300 ease-in-out hover:text-slate-800 " +
+                              (isActive && "!text-white bg-meta-4 p-2")
                             }
                           >
                             My Campaigns

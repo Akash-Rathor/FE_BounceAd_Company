@@ -52,7 +52,7 @@ const NewCampaign = () => {
   const [bid, setBid] = useState('');
   const [adType, setAdType] = useState('');
   const [uploadedFile, setUploadedFile] = useState([]);
-  const [videoUrl, setVideoUrl] = useState('');
+  const [fileUrl, setfileUrl] = useState('');
   const [adFormat, setAdFormat] = useState('');
 
   useEffect(() => {
@@ -93,11 +93,11 @@ const NewCampaign = () => {
   }, [adType])
 
   useEffect(() => {
-    let videoUrl = '';
+    let fileUrl = '';
     if (uploadedFile instanceof Blob) {
-      videoUrl = URL.createObjectURL(uploadedFile);
+      fileUrl = URL.createObjectURL(uploadedFile);
     }
-    setVideoUrl(videoUrl);
+    setfileUrl(fileUrl);
   }, [uploadedFile]);
 
   // form fields and methods end
@@ -124,7 +124,7 @@ const NewCampaign = () => {
     setBid('')
     setAdType('')
     setUploadedFile('')
-    setVideoUrl('')
+    setfileUrl('')
     setAdFormat('')
 
     setIsLoading(false);
@@ -201,7 +201,7 @@ const NewCampaign = () => {
 
             <YourAd
               showSkip={showSkip}
-              videoUrl={videoUrl}
+              fileUrl={fileUrl}
               setUploadedFile={setUploadedFile}
               campaignName={campaignName}
               // budgeError={budgeError}

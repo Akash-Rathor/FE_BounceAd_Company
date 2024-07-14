@@ -24,15 +24,20 @@ const DragNdrop = ({ onFilesSelected, width, height, adFormat }) => {
   const handleDrop = event => {
     event.preventDefault();
     const droppedFiles = event.dataTransfer.files;
+    
     if (droppedFiles.length > 0) {
-      if (acceptedTypes.includes(droppedFiles[0].type)) {
-        setFile(droppedFiles[0]);
+      const newFile = droppedFiles[0];
+      
+      // Directly update the file without confirmation
+      if (acceptedTypes.includes(newFile.type)) {
+        setFile(newFile);
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
     }
   };
+  
 
   const handleRemoveFile = () => {
     setFile(null);
