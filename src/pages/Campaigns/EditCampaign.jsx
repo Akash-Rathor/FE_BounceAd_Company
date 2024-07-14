@@ -13,7 +13,7 @@ import Adcatagory from '../../components/CampaignFormElements/Adcatagory';
 import YourAd from '../../components/CampaignFormElements/YourAd/YourAd';
 import Adformat from '../../components/CampaignFormElements/Adformat';
 import Loader from '../../common/Loader/index';
-import Success from '../../common/Alerts/Success';
+import Success from '../../common/Alerts/Success/Success';
 import { useLocation } from "react-router-dom";
 
 const EditCampaign = () => {

@@ -23,7 +23,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [popupHandling, setPopUpHandling] = useState({
-    title: 'Registration Error',
+    title: 'Login Error',
     message: '',
     okayText: 'Okay',
     okayColor: 'red-600',

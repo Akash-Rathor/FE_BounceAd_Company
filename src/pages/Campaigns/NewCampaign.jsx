@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
 import PopUpAlert from '../../common/Alerts/PopUpAlert';
@@ -13,9 +14,13 @@ import Adcatagory from '../../components/CampaignFormElements/Adcatagory';
 import YourAd from '../../components/CampaignFormElements/YourAd/YourAd';
 import Adformat from '../../components/CampaignFormElements/Adformat';
 import Loader from '../../common/Loader/index';
-import Success from '../../common/Alerts/Success';
+import Success from '../../common/Alerts/Success/Success';
 
 const NewCampaign = () => {
+
+  const navigate = useNavigate();
+
+  // your advertisement component
   const [showSkip, setShowSkip] = useState(false);
 
   // modal fields and methods
@@ -25,6 +30,7 @@ const NewCampaign = () => {
   const [modalColor, setModalColor] = useState('success');
   const [isLoading,setIsLoading] = useState(false);
   const [successVisibility,setSuccessVisibility] = useState(false);
+  const [successMsg,setSuccessMsg] = useState('');
 
   const cancelForm = () => {
     setIsVisible(true);
@@ -99,7 +105,7 @@ const NewCampaign = () => {
 
   // submit form
   const submitForm = () => {
-    // console.log('Submit form clicked')
+    setSuccessMsg('Your Campaign have been saved successfully, proceeding to payment')
     setSuccessVisibility(true);
   }
   //  submit form end
@@ -137,10 +143,9 @@ const NewCampaign = () => {
         />
         }
         {successVisibility && <Success
-          title={modaltitle}
-          message={modalMsg}
+          message={successMsg}
           setIsVisible={ () => setSuccessVisibility(false)}
-          reDirectTo=''
+          reDirectTo='/payment'
         />}
 
         <div className="mx-auto max-w-360">

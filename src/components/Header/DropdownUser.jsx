@@ -4,6 +4,7 @@ import ClickOutside from '../ClickOutside';
 import UserOne from '../../images/user/user-01.png';
 import { useLogout } from '../../utility/Auth/Auth';
 import Cookies from 'js-cookie';
+import AvatarPic from '../../assets/images/avatar.png';
 
 const DropdownUser = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -28,7 +29,7 @@ const DropdownUser = (props) => {
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <img src={props.user.picture} alt="User" className='rounded-full' />
+          <img src={props.user.picture ?props.user.picture : AvatarPic} alt="User" className='rounded-full' />
         </span>
 
         <svg

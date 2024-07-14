@@ -14,13 +14,15 @@ import Signup from './pages/Auth/Signup';
 import EditCampaign from './pages/Campaigns/EditCampaign';
 import BillingHistory from './pages/Billing/BillingHistory';
 import Error505 from './pages/Error/Error505';
+import Payment from './pages/payment/Payment';
 
 const router = createBrowserRouter([
   { path: '/', element: <><Navbar  showLogo={true}/><Home /></> },
   { path: '/login', element: <><Navbar showLogo={true}/><Login /></> },
   { path: '/signup', element: <><Navbar showLogo={true}/><Signup /></> },
-  { path: '/Profile', element:<Profile /> },
+  { path: '/payment', element: <><Navbar showLogo={true}/><Payment /></> },
   { path: '/contact', element: <><Navbar showLogo={true}/><Contact /></> },
+  { path: '/Profile', element:<Profile /> },
   { path: '/blogs', element:<Blogs /> },
   { path: '/dashboard', element: <Dashboard /> },
   { path: '/campaigns', element: <Campaigns /> },
