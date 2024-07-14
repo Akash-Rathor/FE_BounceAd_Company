@@ -104,7 +104,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                   <React.Fragment>
                     <NavLink
                       to="/dashboard"
-                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 hover:text-white duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 hover:font-semibold font-medium text-slate-500 hover:text-white duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                         (pathname === "/dashboard" || pathname.includes("dashboard")) &&
                         "bg-graydark dark:bg-meta-4 text-white"
                       }`}
@@ -155,7 +155,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                   <React.Fragment>
                     <NavLink
                       to="#"
-                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark hover:text-white dark:hover:bg-meta-4  ${
+                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 hover:font-semibold py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark hover:text-white dark:hover:bg-meta-4  ${
                         (pathname === "/campaign/new" || pathname === "/campaigns") &&
                         "bg-graydark dark:bg-meta-4 text-white"
                       }`}
@@ -206,7 +206,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                           <NavLink
                             to="/campaign/new"
                             className={({ isActive }) =>
-                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-slate-300  duration-300 ease-in-out hover:text-slate-800 " +
+                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-slate-300  duration-300 ease-in-out hover:font-semibold hover:text-slate-800 " +
                               (isActive && "!text-white bg-meta-4 p-2 ")
                             }
                           >
@@ -217,7 +217,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                           <NavLink
                             to="/campaigns"
                             className={({ isActive }) =>
-                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-slate-300  duration-300 ease-in-out hover:text-slate-800 " +
+                              "group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-slate-300  duration-300 ease-in-out hover:font-semibold hover:text-slate-800 " +
                               (isActive && "!text-white bg-meta-4 p-2")
                             }
                           >

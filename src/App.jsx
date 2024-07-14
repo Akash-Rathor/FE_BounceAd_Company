@@ -17,11 +17,11 @@ import Error505 from './pages/Error/Error505';
 import Payment from './pages/payment/Payment';
 
 const router = createBrowserRouter([
-  { path: '/', element: <><Navbar  showLogo={true}/><Home /></> },
-  { path: '/login', element: <><Navbar showLogo={true}/><Login /></> },
-  { path: '/signup', element: <><Navbar showLogo={true}/><Signup /></> },
-  { path: '/payment', element: <><Navbar showLogo={true}/><Payment /></> },
-  { path: '/contact', element: <><Navbar showLogo={true}/><Contact /></> },
+  { path: '/', element: <><Navbar  showLogo={true} showSideBarIconOnMobile={false}/><Home /></> },
+  { path: '/login', element: <><Navbar showLogo={true} showSideBarIconOnMobile={false}/><Login /></> },
+  { path: '/signup', element: <><Navbar showLogo={true} showSideBarIconOnMobile={false}/><Signup /></> },
+  { path: '/payment', element: <><Navbar showLogo={true} showSideBarIconOnMobile={false}/><Payment /></> },
+  { path: '/contact', element: <><Navbar showLogo={true} showSideBarIconOnMobile={false}/><Contact /></> },
   { path: '/Profile', element:<Profile /> },
   { path: '/blogs', element:<Blogs /> },
   { path: '/dashboard', element: <Dashboard /> },

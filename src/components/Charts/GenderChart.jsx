@@ -43,7 +43,7 @@ const options = {
   },
 }
 
-const ChartThree = () => {
+const GenderChart = () => {
   const [state, setState] = useState({
     series: [65, 33, 2],
     chartWidth: "100%",
@@ -81,7 +81,7 @@ const ChartThree = () => {
   }
 
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-5">
+    <div className="col-span-12 rounded-3xl border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-5">
       <div className="mb-3 justify-between gap-4 sm:flex">
         <div>
           <h5 className="text-xl font-semibold text-black dark:text-white">
@@ -90,7 +90,7 @@ const ChartThree = () => {
         </div>
         <div>
           <div className="relative z-20 inline-block">
-            <select
+            {/* <select
               name=""
               id=""
               className="relative z-20 inline-flex appearance-none bg-transparent py-1 pl-3 pr-8 text-sm font-medium outline-none"
@@ -98,11 +98,8 @@ const ChartThree = () => {
               <option value="" className="dark:bg-boxdark">
                 Monthly
               </option>
-              {/* <option value="" className="dark:bg-boxdark">
-                Yearly
-              </option> */}
-            </select>
-            <span className="absolute right-3 top-1/2 z-10 -translate-y-1/2">
+            </select> */}
+            {/* <span className="absolute right-3 top-1/2 z-10 -translate-y-1/2">
               <svg
                 width="10"
                 height="6"
@@ -121,7 +118,7 @@ const ChartThree = () => {
                   fill="#637381"
                 />
               </svg>
-            </span>
+            </span> */}
           </div>
         </div>
       </div>
@@ -178,4 +175,4 @@ const ChartThree = () => {
   )
 }
 
-export default ChartThree
+export default GenderChart;

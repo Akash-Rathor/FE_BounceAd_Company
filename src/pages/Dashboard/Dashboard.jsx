@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from 'react-router-dom';
 import CardDataStats from "../../components/CardDataStats"
 import ChartOne from "../../components/Charts/ChartOne"
-import ChartThree from "../../components/Charts/ChartThree"
-import ChartTwo from "../../components/Charts/ChartTwo"
+import GenderChart from "../../components/Charts/GenderChart"
+import BarChart from "../../components/Charts/BarChart"
 import TopPlaces from "../../components/TopPlaces/TopPlaces"
 // import MapOne from "../../components/Maps/MapOne"
 import DefaultLayout from '../../layout/DefaultLayout';
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const { logoutUser } = useLogout();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [user,setUser] = useState()
+  const [user, setUser] = useState()
 
   const navigate = useNavigate();
 
@@ -126,12 +126,17 @@ const Dashboard = () => {
         </CardDataStats>
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <ChartTwo />
+      <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row justify-evenly mt-4 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
+        <div className="flex-grow">
+          <GenderChart /> {/* Gender Analytics */}
+        </div>
+        <div className="flex-grow">
+          <TopPlaces /> {/* Top 5 locations Analytics */}
+        </div>
       </div>
-      <div className="flex flex-col md:flex-row justify-between mt-4 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-        <ChartThree />  {/* Gender Analytics */}
-        <TopPlaces /> {/* top 5 locations Analytics */}
+
+      <div className="mt-4 grid grid-cols-2 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
+        <BarChart />
       </div>
 
     </DefaultLayout>

@@ -28,12 +28,17 @@ const BudgetDate = ({ setBudgetAndDates, bidStrategy }) => {
   });
   const [message, setMessage] = useState('');
   const [budgetMessage, setBudgetMessage] = useState('');
+  const [minDays,setMinDays] = useState(10);
 
+
+  
   useEffect(() => {
     if (bidStrategy === 'Maximum CPV') {
       setDropdownTitle('Budget Type');
+      setMinDays(10);
     } else if (bidStrategy === 'Minimum Count') {
       setDropdownTitle('Number of Months');
+      setMinDays(31);
     }
     setData({
       startDate: '',
@@ -227,7 +232,7 @@ const BudgetDate = ({ setBudgetAndDates, bidStrategy }) => {
                     dateFormat="dd/MM/yyyy"
                     onChange={(date) => setDates('endDate', date)}
                     showPreviousMonths={false}
-                    minDate={new Date()}
+                    minDate={startDate ? new Date(startDate.getTime() + minDays * 86400000) : new Date()}
                   />
                 </div>
                   {budgetMessage && <p style={{ fontSize: 12 }} className='p-2 bg-green-500 bg-opacity-30 text-green-900 rounded-md mt-5'>{budgetMessage}</p>}

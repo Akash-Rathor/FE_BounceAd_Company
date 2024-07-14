@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { useLogout } from '../../utility/Auth/Auth';
 import Header from '../Header';
 
-const Navbar = ({showLogo,isLoggedIn ,sidebarOpen,setSidebarOpen,user={}}) => {
+const Navbar = ({showLogo,isLoggedIn ,sidebarOpen,setSidebarOpen,showSideBarIconOnMobile=true,user={}}) => {
   
     const [isLoggedInUser,setIsLoggedInUser] = useState(isLoggedIn);
     const [loggedInUserInfo,setLoggedInUserInfo] = useState(user);
@@ -26,7 +26,7 @@ const Navbar = ({showLogo,isLoggedIn ,sidebarOpen,setSidebarOpen,user={}}) => {
     const [showlogo,setShowLogo] = useState(showLogo);
     
     return (
-        <Header showLogo={showlogo} isLoggedIn={isLoggedInUser} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={loggedInUserInfo}/>
+        <Header showLogo={showlogo} isLoggedIn={isLoggedInUser} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} user={loggedInUserInfo} showSideBarIconOnMobile={showSideBarIconOnMobile}/>
     );
 };
 

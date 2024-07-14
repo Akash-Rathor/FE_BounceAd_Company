@@ -41,7 +41,7 @@ const locData = [
 
 const TopPlaces = () => {
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white py-6 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4 w-full lg:w-2/5">
+    <div className="col-span-12 rounded-3xl border border-stroke bg-white py-6 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4 w-full lg:w-2/5">
       <h4 className="mb-6 px-4 lg:px-7.5 text-xl font-semibold text-black dark:text-white">
         Top 5 Locations
       </h4>
