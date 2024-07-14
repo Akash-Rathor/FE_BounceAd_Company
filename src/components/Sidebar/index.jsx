@@ -50,7 +50,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
   return (
     <aside
       ref={sidebar}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white border-r-2 shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
+      className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white border-r-2 border-boxdark border-opacity-10 rounded-3xl shadow-lg duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -104,7 +104,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                   <React.Fragment>
                     <NavLink
                       to="/dashboard"
-                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 hover:text-white duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                         (pathname === "/dashboard" || pathname.includes("dashboard")) &&
                         "bg-graydark dark:bg-meta-4 text-white"
                       }`}
@@ -155,7 +155,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                   <React.Fragment>
                     <NavLink
                       to="#"
-                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4  ${
+                      className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark hover:text-white dark:hover:bg-meta-4  ${
                         (pathname === "/campaign/new" || pathname === "/campaigns") &&
                         "bg-graydark dark:bg-meta-4 text-white"
                       }`}
@@ -165,7 +165,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                       }}
                     >
                       <svg
-                        className="w-6 h-6 text-slate-500"
+                        className={"w-6 h-6 text-slate-500" + ((pathname === "/campaign/new" || pathname === "/campaigns") && 'text-slate-100')}
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
