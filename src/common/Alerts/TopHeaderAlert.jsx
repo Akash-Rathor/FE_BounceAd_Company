@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 
-const TopHeaderError = ({ title, message, okayText, okayColor='red-600', setIsVisible, setClickOkay }) => {
+const TopHeaderAlert = ({ title, message, okayText, okayColor='red-600', setIsVisible, setClickOkay }) => {
 
     const cancel = () => {
       setIsVisible(false);
@@ -77,4 +77,4 @@ const TopHeaderError = ({ title, message, okayText, okayColor='red-600', setIsVi
   );
 };
 
-export default TopHeaderError;
+export default TopHeaderAlert;

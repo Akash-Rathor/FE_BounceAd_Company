@@ -19,7 +19,7 @@ import { useLocation } from "react-router-dom";
 const EditCampaign = () => {
     
     let { state } = useLocation();
-        
+    const campaignNameFromState = state ? `Edit Campaign` : "Edit Campaign";        
     const [showSkip, setShowSkip] = useState(false);
     
     // modal fields and methods
@@ -148,7 +148,7 @@ const EditCampaign = () => {
             />}
     
             <div className="mx-auto max-w-360">
-            <Breadcrumb pageName={`Edit - ${state.name}`} />
+            <Breadcrumb pageName={campaignNameFromState } />
             {isLoading ? <Loader /> :
             <div className="flex flex-col xl:flex-row gap-8">
                 <div className="flex-1">

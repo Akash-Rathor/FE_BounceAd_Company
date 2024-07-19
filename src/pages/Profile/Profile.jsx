@@ -6,13 +6,17 @@ import Cookies from 'js-cookie';
 import CheckBox from '../../common/CheckBox';
 import Loader from '../../common/Loader/index';
 import AvatarPic from '../../assets/images/avatar.png';
-
+import Success from '../../common/Alerts/Success/Success';
 
 const Profile = () => {
 
   const [phoneLocalState, setPhoneLocalState] = useState('');
   const [data, setData] = useState({});
   const [message, setMessage] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+  const [modalMsg, setModalMsg] = useState('Profile have been successfully saved.');
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const updateValue = (key, val) => {
     // console.log('data', key, val, data);
@@ -59,13 +63,20 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsVisible(true)
     // Handle form submission logic here
     console.log('Form submitted', data);
   };
 
   return (
     <DefaultLayout >
-
+      {isVisible &&
+        <Success
+          message={modalMsg}
+          reDirectTo='/dashboard'
+          setIsVisible={setIsVisible}
+        />
+        }
       <Breadcrumb pageName="Profile" />
       <div className="flex flex-col justify-evenly items-center border-stroke lg:flex-row-reverse">
         <form className='flex justify-center items-center' onSubmit={handleSubmit}>

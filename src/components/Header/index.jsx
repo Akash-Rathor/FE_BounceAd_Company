@@ -52,9 +52,11 @@ const Header = (props) => {
             {/* <!-- Hamburger Toggle BTN --> */}
 
             {props.showLogo &&
-              <Link className="flex flex-row space-x-2 justify-center items-center" to="/">
+              <Link className="flex flex-row space-x-2 justify-center items-center bg-black px-2 py-1 rounded-lg" to="/">
                 <img src={logoIcon} alt="Logo" className="w-12 h-12" />
-                <h2 className='font-bold text-2xl'>BounceAd</h2>
+                {/* <h2 className='font-bold text-2xl text-white'>BounceAd</h2> */}
+                <h2 className='bg-black rounded-lg text-white text-xl font-semibold'>BounceAd</h2>
+
               </Link>
             }
           </div>

@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 
-const SidebarLinkGroup = ({ activeCondition, children, defaultOpen }) => {
+const SidebarLinkGroup = ({ activeCondition, children, defaultOpen,pathname }) => {
+  console.log('pathname',pathname)
   const [open, setOpen] = useState(defaultOpen);
 
   const handleClick = () => {

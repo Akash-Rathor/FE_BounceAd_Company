@@ -105,9 +105,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                     <NavLink
                       to="/dashboard"
                       className={`group relative flex items-center gap-2.5 rounded-lg px-4 py-2 hover:font-semibold font-medium text-slate-500 hover:text-white duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                        (pathname === "/dashboard" || pathname.includes("dashboard")) &&
-                        "bg-graydark dark:bg-meta-4 text-white"
-                      }`}
+                        (pathname === "/dashboard" || pathname.includes("dashboard")) && "bg-graydark dark:bg-meta-4 text-white"}`}
                       onClick={() => {
                         sidebarExpanded ? handleClick() : setSidebarExpanded(true);
                       }}
@@ -144,19 +142,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
               </SidebarLinkGroup>
 
               <SidebarLinkGroup
-                activeCondition={
-                  pathname === "/campaign/new" || pathname === "/campaigns"
-                }
-                defaultOpen={
-                  pathname === "/campaign/new" || pathname === "/campaigns"
-                }
+                activeCondition={pathname.includes("campaigns")}
+                defaultOpen={pathname.includes("campaigns")}
+                pathname = {pathname}
               >
                 {(handleClick, open) => (
                   <React.Fragment>
                     <NavLink
                       to="#"
                       className={`group relative flex items-center gap-2.5 rounded-lg px-4 hover:font-semibold py-2 font-medium text-slate-500 duration-300 ease-in-out hover:bg-graydark hover:text-white dark:hover:bg-meta-4  ${
-                        (pathname === "/campaign/new" || pathname === "/campaigns") &&
+                        (pathname.includes("campaigns")) &&
                         "bg-graydark dark:bg-meta-4 text-white"
                       }`}
                       onClick={() => {
@@ -165,7 +160,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, user = {} }) => {
                       }}
                     >
                       <svg
-                        className={"w-6 h-6 text-slate-500" + ((pathname === "/campaign/new" || pathname === "/campaigns") && 'text-slate-100')}
+                        className={"w-6 h-6 text-slate-500" + (pathname.includes("campaigns") && 'text-slate-100')}
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
