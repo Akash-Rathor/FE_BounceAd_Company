@@ -90,7 +90,7 @@ const BudgetDate = ({ setBudgetAndDates, bidStrategy }) => {
 
   useEffect(() => {
     if(data.cabs && data.months){
-      const amt = 3800 * data.cabs *data.months
+      const amt = 3500 * data.cabs *data.months
       setData(prev => ({
         ...prev,
         amount: amt

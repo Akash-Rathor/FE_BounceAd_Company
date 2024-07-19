@@ -19,11 +19,11 @@ const Location = ({ setLocation }) => {
 
 
     const dataset = [
-        { value: 'Delhi' },
-        { value: 'Noida' },
-        { value: 'Gurugram' },
-        { value: 'Greater Noida' },
-        { value: 'Gaziabaad' },
+        { value: 'Delhi NCR' },
+        // { value: 'Noida' },
+        // { value: 'Gurugram' },
+        // { value: 'Greater Noida' },
+        // { value: 'Gaziabaad' },
     ]
     return (
         <MultiSelect title='Select Locations' dataset={dataset} callBackFunction={setSelectedLocations} />
