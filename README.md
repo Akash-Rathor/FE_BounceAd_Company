@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## View Demo
-https://github.com/Akash-Rathor/FE_BounceAd_Company/screen-capture.mp4
+https://github.com/Akash-Rathor/FE_BounceAd_Company/blob/dev/screen-capture.mp4
 
 ## Available Scripts
 
